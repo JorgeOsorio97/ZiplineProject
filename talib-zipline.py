@@ -1,7 +1,7 @@
-from zipline.api import order record symbol
-from zipline.finance import commission slippage
+from zipline.api import order, record, symbol
+from zipline.finance import commission, slippage
 from talib import EMA
-# Import exponential moving average from talib wrapper,
+# Import exponential moving average from talib wrapper
 
 def initialize(context):
     context.asset = symbol('AAPL')
