@@ -1,15 +1,7 @@
-"""Dual Moving Average Crossover algorithm.
-This algorithm buys apple once its short moving average crosses
-its long moving average (indicating upwards momentum) and sells
-its shares once the averages cross again (indicating downwards
-momentum).
-"""
-
-from zipline.api import order, record, symbol
-from zipline.finance import commission, slippage
-# Import exponential moving average from talib wrapper
+from zipline.api import order record symbol
+from zipline.finance import commission slippage
 from talib import EMA
-
+# Import exponential moving average from talib wrapper,
 
 def initialize(context):
     context.asset = symbol('AAPL')
