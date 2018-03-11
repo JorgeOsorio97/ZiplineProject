@@ -10,8 +10,8 @@ import pytz
 from talib import EMA, MA, SAR
 
 data = OrderedDict()
-start = dt.datetime(2004,1,1)
-end = dt.datetime(2017,12,31)
+start = dt.datetime(2015,1,1)
+end = dt.datetime(2015,12,31)
 
 asset = 'AAPL'
 
@@ -30,8 +30,18 @@ def initialize(context):
     context.count = 0
 
 def handle_data(context, data):
-    MA20 = data[context.asset].mavg(20)
-    print(MA20)
+    long_period = 40
+    if context.count < long_period:
+        context.count+=1
+        return
+    price_history = data.history(context.asset, 'price', 40, '1d')
+    #if trailing_window.isnull().values.any():
+    #    return
+    short_MA = MA(price_history.values, 20)
+    long_MA = MA(price_history.values, long_period)
+    print(short_MA)
+    print(long_MA)
+    
 
 
 """def handle_data(context, data):
