@@ -21,7 +21,7 @@ data[asset].columns = ['open', 'high', 'low','close', 'volume']
 #print(data[asset].info())
 
 panel = pd.Panel(data)
-panel.minor_axis = ['open','high','low','close','volume']
+panel.minor_axis = ['Open','High','Low','Close','Volume']
 panel.major_axis = panel.major_axis.tz_localize(pytz.utc)
 
 def initialize(context):
@@ -29,8 +29,12 @@ def initialize(context):
     context.invest = False
     context.count = 0
 
-
 def handle_data(context, data):
+    MA20 = data[context.asset].mavg(20)
+    print(MA20)
+
+
+"""def handle_data(context, data):
     short_period = 20
     long_period = 100 
     if context.count < long_period:
@@ -42,6 +46,7 @@ def handle_data(context, data):
         print(short_MA)
         
     context.count += 1
+"""
 
 
 
