@@ -14,7 +14,8 @@ end = dt.datetime(2015,12,31)
 
 asset = 'AAPL'  
 
-data[asset] = web.DataReader(asset, 'google', start= start, end=end)
+data[asset] = web.DataReader(asset, 'morningstar', start= start, end=end)
+data[asset].index = data[asset].index.droplevel()
 
 data[asset].columns = ['open', 'high', 'low','close', 'volume']
 #print(data[asset].info())
@@ -37,9 +38,17 @@ def handle_data(context, data):
     price_history = data.history(context.asset, 'price', long_period, '1d')
     short_MA = MA(price_history.values, 20)
     long_MA = MA(price_history.values,40)
+    if short_MA[-1] < long_MA[-1] and not context.invest:
+        order(context.asset, 10)
+        context.invest = True
+    if short_MA[-1] > long_MA[-1] and context.invest:
+        order(context.asset,-10)
+        context.invest = False
     record(price = data.current(context.asset, 'price'), promedioMovilCorto = short_MA, promedioMovilLargo = long_MA) 
-    
+    lt
 
 algo_obj = TradingAlgorithm(initialize = initialize, handle_data = handle_data)
 
 perf_manual = algo_obj.run(panel)
+
+print(perf_manual)
