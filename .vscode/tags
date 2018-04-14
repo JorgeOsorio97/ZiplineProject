@@ -1,0 +1,53 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+MA-zipline.py	../MA-zipline.py	1;"	kind:file	line:1
+_test_args	../ejemplos-externos/talib-zipline.py	/^def _test_args():$/;"	kind:function	line:91
+algo_obj	../MA-zipline.py	/^algo_obj = TradingAlgorithm(initialize = initialize, handle_data = handle_data)$/;"	kind:variable	line:50
+analyze	../ejemplos-externos/talib-zipline.py	/^def analyze(context=None, results=None):$/;"	kind:function	line:48
+api_password	../get-securities-list.py	/^api_password = '7f74a16a497c5f27204b15eebd3eeeae'$/;"	kind:variable	line:5
+api_password	../intrinio_call.py	/^api_password = '7f74a16a497c5f27204b15eebd3eeeae'$/;"	kind:variable	line:4
+api_username	../get-securities-list.py	/^api_username = '8993a7d350ddc80795097189caecf28b'$/;"	kind:variable	line:4
+api_username	../intrinio_call.py	/^api_username = '8993a7d350ddc80795097189caecf28b'$/;"	kind:variable	line:3
+asset	../MA-zipline.py	/^asset = 'AAPL'  $/;"	kind:variable	line:15
+asset	../prueba.py	/^asset = 'AAPL'  $/;"	kind:variable	line:15
+base_url	../get-securities-list.py	/^base_url = "https:\/\/api.intrinio.com"$/;"	kind:variable	line:6
+base_url	../intrinio_call.py	/^base_url = "https:\/\/api.intrinio.com"$/;"	kind:variable	line:5
+bmv	../get-securities-list.py	/^bmv = '^XMEX'$/;"	kind:variable	line:8
+bmv	../intrinio_call.py	/^bmv = '^XMEX'$/;"	kind:variable	line:7
+cols	../get-securities-list.py	/^cols = ['TICKER','SECURITY','FIGI-TICKER','FIGI']$/;"	kind:variable	line:33
+data	../MA-zipline.py	/^data = OrderedDict()$/;"	kind:variable	line:11
+data	../get-securities-list.py	/^data = response.json()['data']$/;"	kind:variable	line:20
+data	../intrinio_call.py	/^data = response.json()['data']$/;"	kind:variable	line:20
+data	../prueba.py	/^data = OrderedDict()$/;"	kind:variable	line:11
+date	../intrinio_call.py	/^    date = row['date']$/;"	kind:variable	line:23
+df	../get-securities-list.py	/^df = []$/;"	kind:variable	line:22
+df	../get-securities-list.py	/^df = pd.DataFrame(df,columns = cols)$/;"	kind:variable	line:34
+end	../MA-zipline.py	/^end = dt.datetime(2015,12,31)$/;"	kind:variable	line:13
+end	../prueba.py	/^end = dt.datetime(2015,12,31)$/;"	kind:variable	line:13
+figi	../get-securities-list.py	/^    figi = row['figi']$/;"	kind:variable	line:29
+figi_ticker	../get-securities-list.py	/^    figi_ticker = row['figi_ticker']$/;"	kind:variable	line:28
+get-securities-list.py	../get-securities-list.py	1;"	kind:file	line:1
+handle_data	../MA-zipline.py	/^def handle_data(context, data):$/;"	kind:function	line:32
+handle_data	../ejemplos-externos/talib-zipline.py	/^def handle_data(context, data):$/;"	kind:function	line:20
+initialize	../MA-zipline.py	/^def initialize(context):$/;"	kind:function	line:27
+initialize	../ejemplos-externos/talib-zipline.py	/^def initialize(context):$/;"	kind:function	line:6
+intrinio_call.py	../intrinio_call.py	1;"	kind:file	line:1
+panel	../MA-zipline.py	/^panel = pd.Panel(data)$/;"	kind:variable	line:23
+perf_manual	../MA-zipline.py	/^perf_manual = algo_obj.run(panel)$/;"	kind:variable	line:52
+prueba.py	../prueba.py	1;"	kind:file	line:1
+q_params	../get-securities-list.py	/^q_params = {$/;"	kind:variable	line:11
+q_params	../intrinio_call.py	/^q_params = {$/;"	kind:variable	line:10
+request_url	../get-securities-list.py	/^request_url = base_url + '\/securities'$/;"	kind:variable	line:10
+request_url	../intrinio_call.py	/^request_url = base_url + '\/historical_data'$/;"	kind:variable	line:9
+response	../get-securities-list.py	/^response = request('get',request_url, params = q_params, auth=(api_username, api_password))$/;"	kind:variable	line:17
+response	../intrinio_call.py	/^response = request('GET',request_url, params = q_params, auth=(api_username, api_password))$/;"	kind:variable	line:18
+security_name	../get-securities-list.py	/^    security_name = row['security_name']$/;"	kind:variable	line:26
+start	../MA-zipline.py	/^start = dt.datetime(2015,1,1)$/;"	kind:variable	line:12
+start	../prueba.py	/^start = dt.datetime(2015,1,1)$/;"	kind:variable	line:12
+talib-zipline.py	../ejemplos-externos/talib-zipline.py	1;"	kind:file	line:1
+ticker	../get-securities-list.py	/^    ticker = row['ticker']$/;"	kind:variable	line:25
+value	../intrinio_call.py	/^    value = row['value']$/;"	kind:variable	line:24
