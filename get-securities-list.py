@@ -10,7 +10,6 @@ for x in list(range(11,20)):
     request_url = base_url + '/securities'
     q_params = {
         'exch_symbol':bmv,
-        #'page_size': 200,
         'page_number':x,
     }
 
@@ -23,8 +22,7 @@ for x in list(range(11,20)):
 
     for row in data:
         ticker = row['ticker']
-        security_name = row['security_name']
-        #   exch_symbol = row['exch_symbol']
+        security_name = ['security_name']
         figi_ticker = row['figi_ticker']
         figi = row['figi']
         df.append([ticker,security_name,figi_ticker,figi])

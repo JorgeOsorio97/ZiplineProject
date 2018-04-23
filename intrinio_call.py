@@ -11,7 +11,7 @@ bmv = '^XMEX'
 request_url = base_url + '/historical_data'
 q_params = {
     'identifier' '',
-    'item': 'close_price',  
+    'item': 'close_price',
     'start_date': '2007-01-01',
     'end_date': '2018-06-04',   
     'frequency': 'daily',
@@ -25,7 +25,7 @@ print(n_pages)
 
 cols = ['Date','Open', 'High', 'Low', 'Close', 'Volume']
 
-df = pd.DataFrame()
+df = pd.DataFrame(cols = cols,)
 
 for x in np.arange(n_pages):
 
