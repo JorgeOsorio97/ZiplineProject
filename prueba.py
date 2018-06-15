@@ -15,7 +15,6 @@ end = dt.datetime(2015,12,31)
 asset = 'AAPL'  
 data[asset] = web.DataReader(asset, 'morningstar', start= start, end=end)
 print(data[asset].head())
-
 data[asset].index = data[asset].index.droplevel()
 print(data[asset].head())
 data[asset].columns = ['open', 'high', 'low','close', 'volume']

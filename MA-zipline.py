@@ -51,4 +51,4 @@ algo_obj = TradingAlgorithm(initialize = initialize, handle_data = handle_data)
 
 perf_manual = algo_obj.run(panel)
 
-print(perf_manual)
+print(perf_manual)  
