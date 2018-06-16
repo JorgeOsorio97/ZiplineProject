@@ -1,13 +1,13 @@
 #FUNCION PARA EL SIMULADOR QUE NOSOTROS CREAMOS
 import pandas as pd
 import numpy as np
-from talib import EMA # pylint: disable=E0611
+from talib import KAMA # pylint: disable=E0611
 
-def EMAdecision(table, days = 20):   
+def KAMAdecision(table, days = 20):   
     decision = []
     close =table['Close']
     del table
-    data = EMA(np.array(close),days)
+    data = KAMA(np.array(close),days)
 
     for i in np.arange(len(close)):     
         if np.isnan(data[i]):

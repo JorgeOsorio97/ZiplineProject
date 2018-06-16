@@ -1,4 +1,4 @@
-from functions.EMA import EMAdecision
+from functions.KAMA import KAMAdecision
 import pandas_datareader as web
 import pandas as pd
 import datetime as dt
@@ -11,4 +11,4 @@ asset = 'AAPL'
 data = web.DataReader(asset, 'morningstar', start= start, end=end)
 data.index = data.index.droplevel()
 
-print(EMAdecision(data, days=10))
+print(KAMAdecision(data, days=10))
