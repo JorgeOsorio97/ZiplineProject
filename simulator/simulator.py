@@ -28,18 +28,37 @@ class Simulator:
             self.initCapital = None
             self.stdPurchase = stdPurchase
 
-    finCapital = 0
+    fin_capital = 0
     indicators_names = []
+    final_decision = []
     
     def add_indicator(self, name ='', decision = []):
         if len(self.security['Close']) == len(decision):
             self.security[name] = decision
             self.indicators_names.append(name)
-    
-    def calc_earning(self):
+        else:
+            print('el tamaño de tu decision es incorrecto')
+
+    def calcDecision(self):
         if len(self.indicators_names)==0:
             return("Debes cargar los indicadores primero")
         for day in self.security.index.values:
-            decision = []
+            decision = pd.Series([])
             for indicator in self.indicators_names:
-                decision.append(self.security[indicator][day])
+                decision = decision.append(pd.Series(self.security[indicator].loc[day]), ignore_index=True)
+            decision.dropna()
+            if len(decision) == 0:
+                self.final_decision.append(None)
+            else:
+                sell_count = decision.value_counts('Sell')
+                buy_count = decision.value_count('Buy')
+                if sell_count > buy_count:
+                    self.final_decision.append('Sell')
+                elif sell_count < buy_count:
+                    self.final_decision.append('Buy')
+            
+    
+    def calc_earning(self):
+        self.calcDecision()
+        
+        
