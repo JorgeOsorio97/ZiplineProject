@@ -34,6 +34,8 @@ class Simulator:
     final_decision = []
     operations_made = 0
     shares_own = 0
+    highest_point = 0
+    lowest_point = 0 
 
     def check_first_purchase_method(self):
         if self.init_capital is not None and self.std_purchase is not None:
@@ -114,5 +116,4 @@ class Simulator:
                         self.final_capital += self.shares_own * self.security['Close'].iloc[i]
                         self.shares_own = 0
                         self.operations_made +=1
-                    print(self.final_capital)
         
