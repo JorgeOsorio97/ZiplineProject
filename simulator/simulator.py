@@ -36,6 +36,8 @@ class Simulator:
     shares_own = 0
     highest_point = 0
     lowest_point = 0 
+    security_highest_point = 0
+    security_lowest_point = 0 
 
     def check_first_purchase_method(self):
         if self.init_capital is not None and self.std_purchase is not None:
@@ -48,7 +50,7 @@ class Simulator:
         elif self.std_purchase is not None:
             return "std_purchase"
 
-    def add_indicator(self, name ='', decision = []):
+    def add_indicator(self, name:str, decision = []):
         if len(self.security['Close']) == len(decision):
             self.security[name] = decision
             self.indicators_names.append(name)
@@ -79,9 +81,7 @@ class Simulator:
     
     def calc_earning(self):
         self.calcDecision()
-        #print(self.security.head())
-        #print(self.security.tail())
-        first_purchase = self.check_first_purchase_method()
+        first_purchase_method = self.check_first_purchase_method()
         for i in np.arange(len(self.security['Close'])):
             if self.security['FinalDecision'].iloc[i] == None:
                 pass
@@ -90,21 +90,16 @@ class Simulator:
                     pass
                 else:
                     if self.operations_made == 0:
-                        if first_purchase == 'init_capital':
+                        if first_purchase_method == 'init_capital':
                             self.shares_own = int((self.init_capital / self.security['Close'].iloc[i]))
                             self.operations_made += 1
-                        elif first_purchase == 'std_purchase':
+                        elif first_purchase_method == 'std_purchase':
                             self.shares_own = self.std_purchase
                             self.operations_made += 1   
                     else:
-                        """if first_purchase == 'init_capital':
-                            self.shares_own = int(self.final_capital / self.security['Close'].iloc[i])
-                        elif first_purchase == 'std_purchase':
-                            self.shares_own = self.std_purchase
-                            self.operations_made += 1"""
                         self.shares_own = int(self.final_capital/ self.security['Close'].iloc[i])
-                        self.final_capital = self.final_capital % self.security['Close'].iloc[i]
-                    print(self.shares_own)
+                        self.final_capital = self.  final_capital % self.security['Close'].iloc[i]
+                    #print(self.shares_own)
                         
             elif self.security['FinalDecision'].iloc[i] == 'Sell':
                 if  self.security['FinalDecision'].iloc[i-1] == 'Sell':
@@ -115,5 +110,15 @@ class Simulator:
                     else:
                         self.final_capital += self.shares_own * self.security['Close'].iloc[i]
                         self.shares_own = 0
-                        self.operations_made +=1
-        
+                        self.operations_made +=1    
+            #Checar si es el momento mas alto o bajo de ganancias
+            if self.shares_own == 0:
+                if self.highest_point == None or self.highest_point < self.final_capital:
+                    self.highest_point = self.final_capital
+                if (self.lowest_point == None or self.lowest_point > self.final_capital or self.lowest_point == 0):
+                    self.lowest_point = self.final_capital
+            else:
+                if self.highest_point == None or self.highest_point < (self.shares_own * self.security['Close'].iloc[i]):
+                    self.highest_point = self.final_capital
+                if (self.lowest_point == None or self.lowest_point > (self.shares_own * self.security['Close'].iloc[i]) or self.lowest_point == 0):
+                    self.lowest_point = self.final_capital 
