@@ -11,4 +11,4 @@ asset = 'AAPL'
 data = web.DataReader(asset, 'morningstar', start= start, end=end)
 data.index = data.index.droplevel()
 
-print(SARdecision(data))
+print(len(SARdecision(data)['decision']))

@@ -22,4 +22,4 @@ def SARdecision(table, aceleration = 0.02, max = 0.2):
             decision.append(decision[-1])  
 
     
-    return decision
+    return {'decision' :decision, 'data': data}

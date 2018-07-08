@@ -16,6 +16,6 @@ def KAMAdecision(table, days = 20):
             decision.append('Sell') 
         if data[i] < close[i]:
             decision.append('Buy')  
-    return decision
+    return {'decision' :decision, 'data': data}
 
 

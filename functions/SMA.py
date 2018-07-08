@@ -7,15 +7,16 @@ def SMAdecision(table, days = 20):
     decision = []
     close =table['Close']
     del table
-    dataSMA = SMA(np.array(close),days)
+    data = SMA(np.array(close),days)
 
     for i in np.arange(len(close)):     
-        if np.isnan(dataSMA[i]):
+        if np.isnan(data[i]):
             decision.append(None)
-        if dataSMA[i] > close[i]:
+        if data[i] > close[i]:
             decision.append('Sell') 
-        if dataSMA[i] < close[i]:
+        if data[i] < close[i]:
             decision.append('Buy')  
-    return decision
+    return {'decision' :decision, 'data': data}
+
 
 
