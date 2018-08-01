@@ -83,7 +83,7 @@ class Simulator:
         self.calcDecision()
         first_purchase_method = self.check_first_purchase_method()
         for i in np.arange(len(self.security['Close'])):
-            if self.security['FinalDecision'].iloc[i] == None:
+            if self.security['FinalDecision'].iloc[i] =final_capital
                 pass
             elif self.security['FinalDecision'].iloc[i] == 'Buy':
                 if  self.security['FinalDecision'].iloc[i-1] == 'Buy':
