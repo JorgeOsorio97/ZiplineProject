@@ -10,4 +10,3 @@ def getQuote(symbol):
     res = requests.post('https://marketdata.websol.barchart.com/getQuote.json', data={'apikey':apiKey, 'symbols':symbol})
     return res.json()['results'][0]
 
-print(getHistory('AAPL', '20180701'))
